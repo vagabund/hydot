@@ -1,0 +1,8 @@
+font_family Cascadia Code
+font_size 11
+window_padding_width 20
+
+# BEGIN_KITTY_THEME
+# Neutron
+include current-theme.conf
+# END_KITTY_THEME

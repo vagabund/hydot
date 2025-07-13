@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu id="menu">
+    <item id="reboot" label="Reboot"/>
+    <item id="shutdown" label="Shutdown"/>
+    <item id="suspend" label="Suspend"/>
+    <item id="hibernate" label="Hybernate"/>
+</menu>
