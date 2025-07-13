@@ -358,9 +358,10 @@
   font-size: 1.1rem;
 }
 
+
 /* Mpris widget */
-@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-@define-color mpris-button-hover rgba(0, 0, 0, 0.50);
+@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.65);
+@define-color mpris-button-hover rgba(0, 0, 0, 0.60);
 .widget-mpris {
   /* The parent to all players */
 }
@@ -369,36 +370,51 @@
   padding: 8px;
   padding: 16px;
   margin: 16px 20px;
-  background-color: @mpris-album-art-overlay;
-  border-radius: 12px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.75);
+  background-image: none;
+  box-shadow: none;
+  color: @text-color;
+  opacity: 0.9
 }
+
 
 .widget-mpris .widget-mpris-player button:hover {
   /* The media player buttons (play, pause, next, etc...) */
-  background: @noti-bg-hover;
+  background-color: rgba(35, 35, 35, 0.1);
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-album-art {
-  border-radius: 12px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+  /*border-radius: 10px;
+  box-shadow: none;
+  background-image: none;*/
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-title {
   font-weight: bold;
   font-size: 1.25rem;
+  color: @text-color;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-subtitle {
   font-size: 1.1rem;
+  color: @text-color;
 }
 
 .widget-mpris .widget-mpris-player > box > button {
   /* Change player control buttons */
+  background: none;
+  border: none;
+  color: @text-color;
+  font-size: 18px;
+  padding: 6px;
 }
 
 .widget-mpris .widget-mpris-player > box > button:hover {
-  background-color: @mpris-button-hover;
+  background-color: rgba(35, 35, 35, 0.7);
 }
 
 .widget-mpris > box > button {

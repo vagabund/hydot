@@ -24,6 +24,11 @@ if [[ "$current" == *"prefer-light"* ]]; then
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_DARK" "$CURRENT_WALL"
   ln -sf ~/.config/swaync/style-dark.css ~/.config/swaync/style.css
+  if [[ "$LANG" == "ru_RU.UTF-8" ]]; then
+   ln -sf ~/.config/swaync/config-ru.json ~/.config/swaync/config.json
+  else
+   ln -sf ~/.config/swaync/config-default.json ~/.config/swaync/config.json 
+  fi
   killall hyprpaper
   hyprpaper &
   killall swaync
@@ -39,6 +44,11 @@ else
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_LIGHT" "$CURRENT_WALL"
   ln -sf ~/.config/swaync/style-light.css ~/.config/swaync/style.css
+  if [[ "$LANG" == "ru_RU.UTF-8" ]]; then
+   ln -sf ~/.config/swaync/config-ru.json ~/.config/swaync/config.json
+  else
+   ln -sf ~/.config/swaync/config-default.json ~/.config/swaync/config.json 
+  fi
   killall hyprpaper
   hyprpaper &
   killall swaync
