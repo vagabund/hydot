@@ -95,6 +95,11 @@
           "command": "sh -c \'$HOME/.config/hypr/switch_theme.sh\'"
         },
         {
+          "label": "📊",
+          "type": "command",
+          "command": "gnome-system-monitor"
+        },
+        {
           "label": "ꗃ",
           "type": "command",
           "command": "hyprlock"

@@ -435,6 +435,7 @@
   padding: 8px;
   margin: 8px;
   border-radius: 12px;
+  align-items: center;
 }
 
 .widget-buttons-grid flowboxchild > button {
