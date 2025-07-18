@@ -16,7 +16,7 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "custom/theme-switcher",
+        //"custom/theme-switcher",
         "mpd",
         "pulseaudio",
         "cpu",
@@ -30,8 +30,8 @@
         "battery#bat2",
         "clock",
         "tray",
-        "custom/swaync",
-        "custom/power"
+        "custom/swaync"
+        //"custom/power"
     ],
     "keyboard-state": {
         "numlock": true,

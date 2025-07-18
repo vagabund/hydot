@@ -1,4 +1,4 @@
-
+#!/bin/bash
 current=$(gsettings get org.gnome.desktop.interface color-scheme)
 WALL_DIR=$(xdg-user-dir PICTURES)
 WALL_LIGHT="$WALL_DIR/light.jpg"
@@ -19,8 +19,8 @@ if [[ "$current" == *"prefer-light"* ]]; then
   kitty +kitten themes Neutron
   sed -i 's|<option name="global_color_scheme" value=".*"|<option name="global_color_scheme" value="Dark"|' "$PYCHARM_CFG"
   kvantummanager --set KvArcDark# >/dev/null
-  echo "wallpaper = $MONITOR,$WALL_DARK" >> "$HYPRPAPER_CFG.tmp"
-  mv "$HYPRPAPER_CFG.tmp" "$HYPRPAPER_CFG"
+  hyprctl hyprpaper preload "$WALL_DARK"
+  hyprctl hyprpaper wallpaper "$MONITOR,$WALL_DARK"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_DARK" "$CURRENT_WALL"
   ln -sf ~/.config/swaync/style-dark.css ~/.config/swaync/style.css
@@ -29,8 +29,6 @@ if [[ "$current" == *"prefer-light"* ]]; then
   else
    ln -sf ~/.config/swaync/config-default.json ~/.config/swaync/config.json 
   fi
-  killall hyprpaper
-  hyprpaper &
   killall swaync
   swaync &
 else
@@ -39,8 +37,8 @@ else
   sed -i 's|<option name="global_color_scheme" value=".*"|<option name="global_color_scheme" value="Light"|' "$PYCHARM_CFG"
   kvantummanager --set KvArc# >/dev/null
   sed -i 's|^theme=.*|theme=KvArc#' "$KVANTUM_CFG"
-  echo "wallpaper = $MONITOR,$WALL_LIGHT" >> "$HYPRPAPER_CFG.tmp"
-  mv "$HYPRPAPER_CFG.tmp" "$HYPRPAPER_CFG"
+  hyprctl hyprpaper preload "$WALL_LIGHT"
+  hyprctl hyprpaper wallpaper "$MONITOR,$WALL_LIGHT"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_LIGHT" "$CURRENT_WALL"
   ln -sf ~/.config/swaync/style-light.css ~/.config/swaync/style.css
@@ -49,8 +47,6 @@ else
   else
    ln -sf ~/.config/swaync/config-default.json ~/.config/swaync/config.json 
   fi
-  killall hyprpaper
-  hyprpaper &
   killall swaync
   swaync &
 fi

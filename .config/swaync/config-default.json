@@ -53,7 +53,9 @@
     "inhibitors",
     "title",
     "dnd",
-    "notifications"
+    "notifications",
+    "buttons-grid",
+    "mpris" 
   ],
   "widget-config": {
     "inhibitors": {
@@ -81,13 +83,33 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "直",
+          "label": "ᛒ",
           "type": "toggle",
-          "active": true,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
-          "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+          "command": "bluetoothctl power on",
+          "disable-command": "bluetoothctl power off",
+          "active": true
+        },
+        {
+          "label": "🎨",
+          "type": "toggle",
+          "command": "sh -c \'$HOME/.config/hypr/switch_theme.sh\'"
+        },
+        {
+          "label": "ꗃ",
+          "type": "command",
+          "command": "hyprlock"
+        },
+        {
+          "label": "↻",
+          "type": "command",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "⏻",
+          "type": "command",
+          "command": "systemctl poweroff"
         }
       ]
-    }
+      }
   }
 }
