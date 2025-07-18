@@ -282,6 +282,12 @@ label:focus {
     color: #2d3436;
 }
 
+#mpris {
+    background-color: #de8cb9;
+    color: black;
+    padding: 0px 5px 0px 0px;
+}
+
 #mpd {
     background-color: #66cc99;
     color: #2a5c45;
@@ -366,11 +372,11 @@ label:focus {
 }
 
 #custom-swaync.swaync-active {
-  color: #ffcc00;
+  color: black;
 }
 
 #custom-swaync.swaync-empty {
-  color: #777777;
+  color: black;
 }
 
 tooltip {
