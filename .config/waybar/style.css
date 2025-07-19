@@ -242,6 +242,7 @@ label:focus {
     background-color: #66cc99;
     color: #2a5c45;
     min-width: 100px;
+    font-weight: bold;
 }
 
 #custom-media.custom-spotify {
