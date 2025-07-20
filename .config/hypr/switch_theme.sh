@@ -6,7 +6,9 @@ WALL_DARK="$WALL_DIR/dark.jpg"
 HYPRPAPER_CFG=~/.config/hypr/hyprpaper.conf
 ROFI_CFG=~/.config/rofi/config.rasi
 KVANTUM_CFG=~/.config/Kvantum/kvantum.kvconfig
-PYCHARM_CFG=~/.config/JetBrains/PyCharm*/options/colors.scheme.xml
+PYCHARM_DIR=$(find ~/.config/JetBrains/ -type d -name "PyCharmCE*" | head -n 1)
+PYCHARM_CFG=$(find ~/.config/JetBrains/ -type f -path "*/PyCharm*/options/colors.scheme.xml" | head -n1)
+PYCHARM_LAF_CFG=$PYCHARM_DIR/options/laf.xml
 CURRENT_WALL="/tmp/wallpaper.jpg"
 MONITOR=$(hyprctl monitors | awk '/Monitor/ {print $2; exit}')
 
@@ -17,7 +19,8 @@ grep -qxF "preload = $WALL_DARK"  "$HYPRPAPER_CFG.tmp" || echo "preload = $WALL_
 if [[ "$current" == *"prefer-light"* ]]; then
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   kitty +kitten themes Neutron
-  sed -i 's|<option name="global_color_scheme" value=".*"|<option name="global_color_scheme" value="Dark"|' "$PYCHARM_CFG"
+  sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Dark"|' "$PYCHARM_CFG"
+  [ -n "$PYCHARM_LAF_CFG" ] && rm -f "$PYCHARM_LAF_CFG"
   kvantummanager --set KvArcDark# >/dev/null
   hyprctl hyprpaper preload "$WALL_DARK"
   hyprctl hyprpaper wallpaper "$MONITOR,$WALL_DARK"
@@ -34,7 +37,17 @@ if [[ "$current" == *"prefer-light"* ]]; then
 else
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
   kitty +kitten themes Spring
-  sed -i 's|<option name="global_color_scheme" value=".*"|<option name="global_color_scheme" value="Light"|' "$PYCHARM_CFG"
+  sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Light"|' "$PYCHARM_CFG"
+  cat > "$PYCHARM_LAF_CFG" <<EOF
+<application>
+  <component name="LafManager">
+    <laf themeId="ExperimentalLightWithLightHeader" />
+    <lafs-to-previous-schemes>
+      <laf-to-scheme laf="ExperimentalLightWithLightHeader" />
+    </lafs-to-previous-schemes>
+  </component>
+</application>
+EOF
   kvantummanager --set KvArc# >/dev/null
   sed -i 's|^theme=.*|theme=KvArc#' "$KVANTUM_CFG"
   hyprctl hyprpaper preload "$WALL_LIGHT"
