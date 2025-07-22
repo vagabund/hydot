@@ -5,7 +5,7 @@
   --noti-bg-alpha: 1;
   --noti-bg-darker: rgba(255, 255, 255, 0.7);
   --noti-bg-hover: rgba(250, 250, 250, 0.7);
-  --noti-bg-focus: rgba(245, 245, 245, 0.7);
+  --noti-bg-focus: rgba(245, 245, 245, 0.6);
   --noti-close-bg: rgba(0, 0, 0, 0.05);
   --noti-close-bg-hover: rgba(0, 0, 0, 0.08);
   --text-color: rgb(0, 0, 0);
@@ -428,6 +428,14 @@
 
 .widget-mpris > box > button:disabled {
   /* Change player side buttons insensitive */
+}
+
+.widget-mpris .widget-mpris-player:first-child:only-child {
+  display: none;
+}
+
+.widget-mpris-player + .widget-mpris-player:has(.widget-mpris-title:only-child) {
+  display: none;
 }
 
 /* Buttons widget */

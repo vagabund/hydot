@@ -369,15 +369,15 @@ label:focus {
   background-color: #f0c674;
   padding: 0 8px;
   font-size: 16px;
-  color: #bbbbbb;
+  color: #2a5c45;
 }
 
 #custom-swaync.swaync-active {
-  color: black;
+  color: #2a5c45;
 }
 
 #custom-swaync.swaync-empty {
-  color: black;
+  color: #2a5c45;
 }
 
 tooltip {

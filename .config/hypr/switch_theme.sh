@@ -26,11 +26,12 @@ if [[ "$current" == *"prefer-light"* ]]; then
   hyprctl hyprpaper wallpaper "$MONITOR,$WALL_DARK"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_DARK" "$CURRENT_WALL"
-  ln -sf ~/.config/swaync/style-dark.css ~/.config/swaync/style.css
+  cd ~/.config/swaync
+  ln -sf style-dark.css style.css
   if [[ "$LANG" == "ru_RU.UTF-8" ]]; then
-   ln -sf ~/.config/swaync/config-ru.json ~/.config/swaync/config.json
+   ln -sf config-ru.json config.json
   else
-   ln -sf ~/.config/swaync/config-default.json ~/.config/swaync/config.json 
+   ln -sf config-default.json config.json 
   fi
   killall swaync
   swaync &
@@ -54,11 +55,12 @@ EOF
   hyprctl hyprpaper wallpaper "$MONITOR,$WALL_LIGHT"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_LIGHT" "$CURRENT_WALL"
-  ln -sf ~/.config/swaync/style-light.css ~/.config/swaync/style.css
+  cd ~/.config/swaync
+  ln -sf style-light.css style.css
   if [[ "$LANG" == "ru_RU.UTF-8" ]]; then
-   ln -sf ~/.config/swaync/config-ru.json ~/.config/swaync/config.json
+   ln -sf config-ru.json config.json
   else
-   ln -sf ~/.config/swaync/config-default.json ~/.config/swaync/config.json 
+   ln -sf config-default.json config.json 
   fi
   killall swaync
   swaync &
