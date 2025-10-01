@@ -19,8 +19,8 @@ grep -qxF "preload = $WALL_DARK"  "$HYPRPAPER_CFG.tmp" || echo "preload = $WALL_
 if [[ "$current" == *"prefer-light"* ]]; then
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   kitty +kitten themes Neutron
-  sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Dark"|' "$PYCHARM_CFG"
-  [ -n "$PYCHARM_LAF_CFG" ] && rm -f "$PYCHARM_LAF_CFG"
+  #sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Dark"|' "$PYCHARM_CFG"
+  #[ -n "$PYCHARM_LAF_CFG" ] && rm -f "$PYCHARM_LAF_CFG"
   kvantummanager --set KvArcDark# >/dev/null
   hyprctl hyprpaper preload "$WALL_DARK"
   hyprctl hyprpaper wallpaper "$MONITOR,$WALL_DARK"
@@ -38,17 +38,17 @@ if [[ "$current" == *"prefer-light"* ]]; then
 else
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
   kitty +kitten themes Spring
-  sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Light"|' "$PYCHARM_CFG"
-  cat > "$PYCHARM_LAF_CFG" <<EOF
-<application>
-  <component name="LafManager">
-    <laf themeId="ExperimentalLightWithLightHeader" />
-    <lafs-to-previous-schemes>
-      <laf-to-scheme laf="ExperimentalLightWithLightHeader" />
-    </lafs-to-previous-schemes>
-  </component>
-</application>
-EOF
+  #sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Light"|' "$PYCHARM_CFG"
+  #cat > "$PYCHARM_LAF_CFG" <<EOF
+#<application>
+#  <component name="LafManager">
+#    <laf themeId="ExperimentalLightWithLightHeader" />
+#    <lafs-to-previous-schemes>
+#      <laf-to-scheme laf="ExperimentalLightWithLightHeader" />
+#    </lafs-to-previous-schemes>
+#  </component>
+#</application>
+#EOF
   kvantummanager --set KvArc# >/dev/null
   sed -i 's|^theme=.*|theme=KvArc#' "$KVANTUM_CFG"
   hyprctl hyprpaper preload "$WALL_LIGHT"
