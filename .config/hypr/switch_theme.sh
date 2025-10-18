@@ -9,7 +9,7 @@ KVANTUM_CFG=~/.config/Kvantum/kvantum.kvconfig
 PYCHARM_DIR=$(find ~/.config/JetBrains/ -type d -name "PyCharmCE*" | head -n 1)
 PYCHARM_CFG=$(find ~/.config/JetBrains/ -type f -path "*/PyCharm*/options/colors.scheme.xml" | head -n1)
 PYCHARM_LAF_CFG=$PYCHARM_DIR/options/laf.xml
-CURRENT_WALL="/tmp/wallpaper.jpg"
+CURRENT_WALL="$HOME/.cache/wallpaper.jpg"
 MONITOR=$(hyprctl monitors | awk '/Monitor/ {print $2; exit}')
 
 grep -E '^preload' "$HYPRPAPER_CFG" > "$HYPRPAPER_CFG.tmp" 2>/dev/null || true
