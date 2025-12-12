@@ -33,8 +33,7 @@ if [[ "$current" == *"prefer-light"* ]]; then
   else
    ln -sf config-default.json config.json 
   fi
-  killall swaync
-  swaync &
+  swaync-client -R -rs
 else
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
   kitty +kitten themes Spring
@@ -62,6 +61,5 @@ else
   else
    ln -sf config-default.json config.json 
   fi
-  killall swaync
-  swaync &
+  swaync-client -R -rs
 fi

@@ -21,7 +21,7 @@
         "cpu",
         "memory",
         //"temperature",
-        "temperature#case",
+        //"temperature#case",
         "backlight",
         //"hyprland/language",
         "battery",
