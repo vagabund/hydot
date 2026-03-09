@@ -19,11 +19,8 @@ grep -qxF "preload = $WALL_DARK"  "$HYPRPAPER_CFG.tmp" || echo "preload = $WALL_
 if [[ "$current" == *"prefer-light"* ]]; then
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   kitty +kitten themes Neutron
-  #sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Dark"|' "$PYCHARM_CFG"
-  #[ -n "$PYCHARM_LAF_CFG" ] && rm -f "$PYCHARM_LAF_CFG"
   kvantummanager --set KvArcDark# >/dev/null
-  hyprctl hyprpaper preload "$WALL_DARK"
-  hyprctl hyprpaper wallpaper "$MONITOR,$WALL_DARK"
+  hyprctl hyprpaper wallpaper "DP-2,$WALL_DARK,cover"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_DARK" "$CURRENT_WALL"
   cd ~/.config/swaync
@@ -34,20 +31,17 @@ if [[ "$current" == *"prefer-light"* ]]; then
    ln -sf config-default.json config.json 
   fi
   swaync-client -R -rs
+  cat > "$HYPRPAPER_CFG" <<EOF
+splash = false
+wallpaper {
+    monitor = $MONITOR
+    path = $WALL_DARK
+    fit_mode = cover
+}
+EOF
 else
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
   kitty +kitten themes Spring
-  #sed -i 's|<global_color_scheme name=".*"|<global_color_scheme name="Light"|' "$PYCHARM_CFG"
-  #cat > "$PYCHARM_LAF_CFG" <<EOF
-#<application>
-#  <component name="LafManager">
-#    <laf themeId="ExperimentalLightWithLightHeader" />
-#    <lafs-to-previous-schemes>
-#      <laf-to-scheme laf="ExperimentalLightWithLightHeader" />
-#    </lafs-to-previous-schemes>
-#  </component>
-#</application>
-#EOF
   kvantummanager --set KvArc# >/dev/null
   sed -i 's|^theme=.*|theme=KvArc#' "$KVANTUM_CFG"
   hyprctl hyprpaper preload "$WALL_LIGHT"
@@ -62,4 +56,12 @@ else
    ln -sf config-default.json config.json 
   fi
   swaync-client -R -rs
+  cat > "$HYPRPAPER_CFG" <<EOF
+splash = false
+wallpaper {
+    monitor = $MONITOR
+    path = $WALL_LIGHT
+    fit_mode = cover
+}
+EOF
 fi
