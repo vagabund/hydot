@@ -20,6 +20,9 @@ if [[ "$current" == *"prefer-light"* ]]; then
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   kitty +kitten themes Neutron
   kvantummanager --set KvArcDark# >/dev/null
+  sed -i 's/^style=.*/style=Adwaita-Dark/' ~/.config/qt6ct/qt6ct.conf
+  sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
+  sed -i 's/^custom_palette=.*/custom_palette=false/' ~/.config/qt6ct/qt6ct.conf
   hyprctl hyprpaper wallpaper "DP-2,$WALL_DARK,cover"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"|' "$ROFI_CFG"
   ln -sf "$WALL_DARK" "$CURRENT_WALL"
@@ -44,6 +47,9 @@ else
   kitty +kitten themes Spring
   kvantummanager --set KvArc# >/dev/null
   sed -i 's|^theme=.*|theme=KvArc#' "$KVANTUM_CFG"
+  sed -i 's/^style=.*/style=Adwaita/' ~/.config/qt6ct/qt6ct.conf
+  sed -i 's/^icon_theme=.*/icon_theme=breeze/' ~/.config/qt6ct/qt6ct.conf
+  sed -i 's/^custom_palette=.*/custom_palette=false/' ~/.config/qt6ct/qt6ct.conf
   hyprctl hyprpaper preload "$WALL_LIGHT"
   hyprctl hyprpaper wallpaper "$MONITOR,$WALL_LIGHT"
   sed -i 's|@theme.*|@theme "~/.local/share/rofi/themes/spotlight.rasi"|' "$ROFI_CFG"
