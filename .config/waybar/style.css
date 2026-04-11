@@ -8,7 +8,7 @@
 }
 
 #window {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -48,7 +48,7 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.9);
     border: none;
     border-radius: 16px;
     transition: all 0.3s ease;
@@ -121,7 +121,7 @@ button:hover {
 
 #clock {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 16px;
     padding: 0px 8px;
 }
 
@@ -198,6 +198,7 @@ label:focus {
 
 #pulseaudio {
     color: #ffffff;
+    font-size: 16px;
 }
 
 #pulseaudio:hover {
@@ -282,7 +283,7 @@ label:focus {
 
 #language {
     color: #ffffff;
-    padding: 2.5px 16px;
+    padding: 2.5px 8px;
     font-size: 16px;
 }
 
@@ -400,3 +401,5 @@ menu separator {
     background-color: rgba(255, 255, 255, 0.1);
     margin: 3px 8px;
 }
+
+
