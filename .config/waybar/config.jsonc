@@ -2,7 +2,7 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 28, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -15,18 +15,18 @@
     "modules-right": [
         //"custom/theme-switcher",
         "mpd",
-        "custom/media",
-        //"mpris",
+        //"custom/media",
+        "mpris",
         "pulseaudio",
-        "cpu",
-        "memory",
+        //"cpu",
+        //"memory",
         //"temperature",
         //"temperature#case",
         "backlight",
+        "tray",
         "hyprland/language",
         "battery",
         "battery#bat2",
-        "tray",
         "clock",
         "custom/swaync"
         //"custom/power"
@@ -80,10 +80,10 @@
     //},
     "mpris": {
       "player-icons": true,
-      "format": "{player_icon} {artist} - {title}",
-      "max-length": 100,
-      "format-paused": "",
+      "format": "▶ {player_icon} {artist} - {title}",
+      "format-paused": "⏸ {player_icon} {artist} - {title}",
       "format-stopped": "",
+      "max-length": 150,
       "on-click": "playerctl play-pause",
       "on-click-right": "playerctl next",
       "on-scroll-up": "playerctl next",
@@ -137,7 +137,8 @@
 	"format": "{}",
 	"format-en": "en",
 	"format-ru": "ru",
-	"keyboard-name": "asus-asus-strix-tactic-pro-gaming-keyboard"
+	"keyboard-name": "asus-asus-strix-tactic-pro-gaming-keyboard",
+	"on-click": "hyprctl switchxkblayout asus-asus-strix-tactic-pro-gaming-keyboard next"
     },
     "battery": {
         "states": {
@@ -178,23 +179,20 @@
         //"format-alt": "{ifname}: {ipaddr}/{cidr}"
     //},
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+    "format": "{icon} {volume}% ",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
     },
     "custom/theme-switcher": {
           "tooltip": false,
