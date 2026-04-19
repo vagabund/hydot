@@ -20,7 +20,7 @@ if [[ "$current" == *"prefer-light"* ]]; then
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   kitty +kitten themes Neutron
   kvantummanager --set KvArcDark# >/dev/null
-  sed -i 's/^style=.*/style=Adwaita-Dark/' ~/.config/qt6ct/qt6ct.conf
+  sed -i 's/^style=.*/style=libAdwaita-Dark/' ~/.config/qt6ct/qt6ct.conf
   sed -i 's/^icon_theme=.*/icon_theme=breeze-dark/' ~/.config/qt6ct/qt6ct.conf
   sed -i 's/^custom_palette=.*/custom_palette=false/' ~/.config/qt6ct/qt6ct.conf
   hyprctl hyprpaper wallpaper "DP-2,$WALL_DARK,cover"
@@ -47,7 +47,7 @@ else
   kitty +kitten themes Spring
   kvantummanager --set KvArc# >/dev/null
   sed -i 's|^theme=.*|theme=KvArc#' "$KVANTUM_CFG"
-  sed -i 's/^style=.*/style=Adwaita/' ~/.config/qt6ct/qt6ct.conf
+  sed -i 's/^style=.*/style=libAdwaita/' ~/.config/qt6ct/qt6ct.conf
   sed -i 's/^icon_theme=.*/icon_theme=breeze/' ~/.config/qt6ct/qt6ct.conf
   sed -i 's/^custom_palette=.*/custom_palette=false/' ~/.config/qt6ct/qt6ct.conf
   hyprctl hyprpaper preload "$WALL_LIGHT"

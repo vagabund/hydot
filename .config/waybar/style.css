@@ -1,6 +1,5 @@
 * {
     font-family: Inter, FontAwesome, sans-serif;
-    font-size: 14px;
     font-weight: 600;
     margin: 2px;
     border-radius: 10px;
@@ -8,8 +7,7 @@
 }
 
 #window {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
 }
 
 window#waybar {
@@ -257,8 +255,9 @@ label:focus {
 }
 
 #mpris {
+    font-size: 15px;
     color: #ffffff;
-    padding: 0px 5px 0px 5px;
+    padding: 1px 8px 0px 8px;
 }
 
 #mpris:hover {
