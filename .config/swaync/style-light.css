@@ -44,7 +44,7 @@
 }
 
 .notification-row:focus {
-  background: var(--noti-bg-focus);
+  background: none;
   outline: none;
 }
 
@@ -220,7 +220,7 @@
 }
 
 .notification-group:focus {
-  background: var(--noti-bg-focus);
+  background: none;
   outline: none;
 }
 
@@ -371,139 +371,145 @@
 
 /* Mpris widget */
 :root {
-  --mpris-album-art-overlay: rgba(255, 255, 255, 0.12);
-  --mpris-button-hover: rgba(255, 255, 255, 0.22);
-  --mpris-button-active: rgba(255, 255, 255, 0.32);
-  --mpris-album-art-icon-size: 110px;
+  --mpris-card-border: rgba(255, 255, 255, 0.45);
+  --mpris-bg-brightness: 1.05;
+  --mpris-tint: rgba(255, 255, 255, 0.14);
+  --mpris-highlight: rgba(255, 255, 255, 0.75);
+  --mpris-shade-left: rgba(0, 0, 0, 0);
+  --mpris-shade-right: rgba(0, 0, 0, 0.14);
+  --mpris-shade-bottom: rgba(0, 0, 0, 0.16);
+  --mpris-arrow-hover: rgba(0, 0, 0, 0.06);
 }
 
 .widget-mpris {
-  margin: 8px;
-  /* The parent to all players */
+  margin: 14px 8px;
 }
 
 .widget-mpris .widget-mpris-player {
-  margin: 10px 14px;
-  border-radius: 20px;
-
-  box-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.8) inset, 
-    0 16px 40px rgba(0, 0, 0, 0.05),             
-   0 4px 12px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
+  margin: 0;
+  border-radius: 22px;
+  border: 1px solid var(--mpris-card-border);
+  box-shadow: none;
 }
 
 .widget-mpris .widget-mpris-player .mpris-background {
-  filter: blur(28px) saturate(1.4) brightness(0.9);
-  opacity: 0.9;
+  filter: blur(32px) saturate(1.8) brightness(var(--mpris-bg-brightness));
+  opacity: 0.6;
 }
 
 .widget-mpris .widget-mpris-player .mpris-overlay {
-  padding: 16px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(0, 0, 0, 0.04) 100%
-  );
-}
-
-.widget-mpris .mpris-overlay button {
-  transition:
-    background-color 0.18s ease,
-    transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.15s ease;
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay button:hover {
-  background-color: var(--mpris-button-hover);
-  border-radius: 999px;
-  transform: translateY(-1px) scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay button:active {
-  background-color: var(--mpris-button-active);
-  transform: scale(0.95);
-  box-shadow: none;
+  padding: 16px 16px 12px 16px;
+  border-radius: 22px;
+  background-color: var(--mpris-tint);
+  box-shadow:
+    inset 0 1.5px 0 var(--mpris-highlight),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, var(--mpris-shade-bottom) 100%),
+    linear-gradient(to right, var(--mpris-shade-left) 0%, var(--mpris-shade-right) 100%);
 }
 
 .widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-album-art {
   border-radius: 14px;
-  -gtk-icon-size: var(--mpris-album-art-icon-size);
-
-  border: 1.5px solid rgba(255, 255, 255, 0.40);
+  -gtk-icon-size: 64px;
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top-color: rgba(255, 255, 255, 0.50);
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.30),
-    0 2px 6px rgba(0, 0, 0, 0.20),
-    0 0 0 0.5px rgba(0, 0, 0, 0.12);
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-title {
   font-weight: 700;
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.50),
-    0 2px 16px rgba(0, 0, 0, 0.40);
-  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.97);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.72);
-  text-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.40),
-    0 2px 12px rgba(0, 0, 0, 0.30);
-  letter-spacing: 0.01em;
-}
-
-.widget-mpris .widget-mpris-album-art {
-  background-clip: padding-box;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.40);
 }
 
 .widget-mpris .widget-mpris-player .mpris-overlay > box > button {
-  color: rgba(255, 255, 255, 0.92);
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  margin-top: 6px;
   border-radius: 999px;
-  padding: 6px;
+  color: rgba(255, 255, 255, 0.88);
+  background: none;
+  box-shadow: none;
+  transition: background-color 150ms ease, transform 150ms ease, color 150ms ease;
 }
 
 .widget-mpris .widget-mpris-player .mpris-overlay > box > button:hover {
-  background-color: var(--mpris-button-hover);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button:active {
+  background-color: rgba(255, 255, 255, 0.26);
+  transform: scale(0.94);
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button:disabled {
+  color: rgba(255, 255, 255, 0.35);
+  background: none;
+}
+
+.widget-mpris .mpris-overlay > box > button:nth-child(3):nth-last-child(3),
+.widget-mpris .mpris-overlay > box > button:nth-child(2):nth-last-child(2) {
+  min-width: 46px;
+  min-height: 46px;
+  margin-left: 6px;
+  margin-right: 6px;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+    0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.widget-mpris .mpris-overlay > box > button:nth-child(3):nth-last-child(3):hover,
+.widget-mpris .mpris-overlay > box > button:nth-child(2):nth-last-child(2):hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.34);
+  transform: scale(1.06);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.65),
+    0 6px 18px rgba(0, 0, 0, 0.20);
+}
+
+.widget-mpris .mpris-overlay > box > button:nth-child(3):nth-last-child(3):active,
+.widget-mpris .mpris-overlay > box > button:nth-child(2):nth-last-child(2):active {
+  transform: scale(0.95);
 }
 
 .widget-mpris > box > button {
-  /* Change player side buttons */
+  min-width: 28px;
+  margin: 0 6px;
+  min-height: 28px;
+  padding: 0;
+  border-radius: 999px;
+  background: none;
+  box-shadow: none;
+  color: var(--text-color);
+  opacity: 0.55;
+  transition: opacity 150ms ease, background-color 150ms ease;
+}
+
+.widget-mpris > box > button:hover {
+  opacity: 1;
+  background-color: var(--mpris-arrow-hover);
 }
 
 .widget-mpris > box > button:disabled {
-  /* Change player side buttons insensitive */
-}
-
-.widget-mpris .widget-mpris-player:first-child:only-child {
-  display: none;
-}
-
-.widget-mpris-player + .widget-mpris-player:has(.widget-mpris-title:only-child) {
-  display: none;
-}
-
-.widget-mpris .mpris-overlay > box > button:nth-child(3) {
-  transform: scale(1.15);
-  background-color: rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.20);
-}
-
-.widget-mpris .mpris-overlay > box > button:nth-child(3):hover {
-  background-color: rgba(255, 255, 255, 0.30);
-  transform: scale(1.3) translateY(-1px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
-}
-
-.widget-mpris .mpris-overlay > box > button:nth-child(2),
-.widget-mpris .mpris-overlay > box > button:nth-child(4) {
-  transform: scale(1.02);
+  opacity: 0.15;
 }
 
 /* Buttons widget */
@@ -511,7 +517,6 @@
   padding: 8px;
   margin: 8px;
   border-radius: 12px;
-  align-items: center;
 }
 
 .widget-buttons-grid flowboxchild > button {
@@ -623,48 +628,122 @@
   border-radius: 12px;
 }
 
-.widget-mpris .widget-mpris-player .mpris-overlay {
-  position: relative;
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  /* горизонталь: слабее у обложки -> сильнее у текста
-     вертикаль: сильнее сверху -> слабее снизу */
-  background:
-    linear-gradient(to right,
-      rgba(0, 0, 0, 0.18) 0%,
-      rgba(0, 0, 0, 0.30) 38%,
-      rgba(0, 0, 0, 0.48) 100%
-    ),
-    linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.18) 0%,
-      rgba(0, 0, 0, 0.05) 100%
-    );
-
-  pointer-events: none;
-  z-index: 0;
-  border-radius: 12px;
-}
-
-/* Контент поверх затемнения */
-.widget-mpris .widget-mpris-player .mpris-overlay > * {
-  position: relative;
-  z-index: 1;
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-title {
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
-}
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box label {
   /* Fixes base GTK 4 CSS setting a filter of opacity 50% for some odd reason */
   filter: none;
+}
+
+.control-center,
+.floating-notifications .notification {
+  backdrop-filter: blur(10px);
+}
+
+:root {
+  --r-panel: 24px;
+  --r-card: 18px;
+  --r-chip: 14px;
+  --glass-panel: rgba(255, 255, 255, 0.45);
+  --glass-card: rgba(255, 255, 255, 0.60);
+  --glass-card-hover: rgba(255, 255, 255, 0.78);
+  --glass-popup: rgba(255, 255, 255, 0.72);
+  --glass-stack-front: rgba(255, 255, 255, 0.78);
+  --glass-stack-back: rgba(255, 255, 255, 0.35);
+  --glass-chip: rgba(255, 255, 255, 0.45);
+  --glass-chip-hover: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.90);
+}
+
+.control-center {
+  background: var(--glass-panel);
+  border-radius: var(--r-panel);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.notification-row .notification-background .notification {
+  border-radius: var(--r-card);
+  background: var(--glass-card);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  border-radius: var(--r-card);
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover,
+.control-center .control-center-list .notification .notification-default-action:hover,
+.control-center .control-center-list .notification .notification-action:hover {
+  background: var(--glass-card-hover);
+}
+
+.notification-row .notification-background .notification .notification-action > button {
+  border-radius: var(--r-chip);
+}
+
+.floating-notifications .notification-row .notification-background .notification {
+  background: var(--glass-popup);
+}
+
+.close-button {
+  background: var(--glass-chip);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.close-button:hover {
+  background: var(--glass-chip-hover);
+  border: 1px solid var(--glass-border);
+}
+
+.widget-buttons-grid flowboxchild > button {
+  border-radius: var(--r-chip);
+  background: var(--glass-chip);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  color: var(--text-color);
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.widget-buttons-grid flowboxchild > button:hover {
+  background: var(--glass-chip-hover);
+}
+
+.widget-buttons-grid flowboxchild > button:active {
+  transform: scale(0.96);
+}
+
+.widget-buttons-grid {
+  background: none;
+}
+
+.widget-buttons-grid flowboxchild > button {
+  min-height: 40px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.widget-buttons-grid flowboxchild > button label {
+  font-size: 1.15rem;
+}
+
+.widget-mpris .widget-mpris-player,
+.widget-mpris .widget-mpris-player .mpris-overlay {
+  border-radius: var(--r-card);
+}
+
+.notification-group.collapsed .notification-row:not(:only-child) .notification {
+  background: var(--glass-stack-back);
+  box-shadow: none;
+}
+
+.notification-group.collapsed .notification-row:last-child:not(:only-child) .notification {
+  background: var(--glass-stack-front);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.notification-group.collapsed:hover .notification-row:last-child:not(:only-child) .notification {
+  background: var(--glass-card-hover);
 }

@@ -1,0 +1,95 @@
+
+* {
+    font:               "Adwaita Sans 12";
+    background-color:   transparent;
+    text-color:         @fg;
+    margin:             0;
+    padding:            0;
+    spacing:            0;
+}
+
+window {
+    location:           center;
+    width:              680px;
+    padding:            10px;
+    border:             1px;
+    border-radius:      24px;
+    border-color:       @border;
+    background-color:   @bg;
+}
+
+mainbox {
+    spacing:            8px;
+    children:           [ inputbar, message, listview ];
+}
+
+inputbar {
+    padding:            10px 14px;
+    spacing:            12px;
+    border:             1px;
+    border-radius:      16px;
+    border-color:       @border;
+    background-color:   @chip;
+    children:           [ textbox-search, entry ];
+}
+
+textbox-search {
+    expand:             false;
+    str:                "";
+    font:               "Font Awesome 7 Free Solid 15";
+    text-color:         @fg-dim;
+    vertical-align:     0.5;
+}
+
+entry, element-icon, element-text {
+    vertical-align:     0.5;
+}
+
+entry {
+    font:               "Adwaita Sans 17";
+    placeholder:        "Поиск...";
+    placeholder-color:  @fg-dim;
+    cursor-color:       @accent;
+}
+
+message {
+    border:             1px;
+    border-radius:      14px;
+    border-color:       @border;
+    background-color:   @chip;
+}
+
+textbox {
+    padding:            8px 14px;
+}
+
+listview {
+    lines:              8;
+    columns:            1;
+    fixed-height:       true;
+    scrollbar:          false;
+    spacing:            2px;
+}
+
+element {
+    padding:            8px 12px;
+    spacing:            14px;
+    border-radius:      12px;
+}
+
+element normal active, element alternate active {
+    text-color:         @accent;
+}
+
+element selected normal, element selected active {
+    background-color:   @sel;
+    text-color:         @sel-fg;
+}
+
+element-icon {
+    size:               28px;
+}
+
+element-text {
+    text-color:         inherit;
+}

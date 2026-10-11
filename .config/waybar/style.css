@@ -1,5 +1,7 @@
+@import url("menu.css");
+
 * {
-    font-family: Inter, FontAwesome, sans-serif;
+    font-family: "Adwaita Sans", FontAwesome, sans-serif;
     font-weight: 600;
     margin: 2px;
     border-radius: 10px;
@@ -367,38 +369,76 @@ label:focus {
   color: #ffffff;
 }
 
+/* Подсказки: те же цвета стекла, что у меню (menu.css) */
 tooltip {
-    background-color: rgba(30, 30, 46, 0.95);
-    color: #ffffff;
+    background-color: @menu_bg;
+    border: 1px solid @menu_border;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 2px 2px;
+    box-shadow: inset 0 1px 0 @menu_highlight;
+    padding: 4px 6px;
+    margin: 0;
+}
+
+tooltip label {
+    color: @menu_fg;
     font-size: 12px;
+    font-weight: 500;
+    text-shadow: none;
+    margin: 0;
+}
+
+/* Меню трея: цвета из menu.css (светлая/тёмная тема) */
+window.popup,
+window.popup decoration {
+    background: transparent;
+    box-shadow: none;
+    border: none;
 }
 
 menu {
-    background-color: rgb(15, 15, 20);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: @menu_bg;
+    border: 1px solid @menu_border;
+    border-radius: 14px;
+    box-shadow: inset 0 1px 0 @menu_highlight;
     padding: 6px;
-    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    color: @menu_fg;
 }
 
 menu menuitem {
     padding: 7px 14px;
-    border-radius: 8px;
+    margin: 1px 0;
+    border-radius: 9px;
     font-size: 13px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    color: @menu_fg;
+    text-shadow: none;
     transition: background 0.15s ease;
 }
 
+menu menuitem label {
+    color: @menu_fg;
+}
+
 menu menuitem:hover {
-    background-color: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    background-color: @menu_hover;
+}
+
+menu menuitem:disabled,
+menu menuitem:disabled label {
+    color: @menu_fg_dim;
+}
+
+menu menuitem check,
+menu menuitem radio,
+menu menuitem arrow {
+    color: @menu_fg;
+    margin: 0 6px 0 0;
 }
 
 menu separator {
-    background-color: rgba(255, 255, 255, 0.1);
-    margin: 3px 8px;
+    background-color: @menu_separator;
+    min-height: 1px;
+    margin: 4px 8px;
+    border-radius: 0;
 }
-
-

@@ -1,0 +1,8 @@
+/* Меню трея — светлое матовое стекло. Подключается через симлинк menu.css (switch_theme.sh) */
+@define-color menu_bg rgba(255, 255, 255, 0.72);
+@define-color menu_border rgba(255, 255, 255, 0.65);
+@define-color menu_highlight rgba(255, 255, 255, 0.95);
+@define-color menu_fg #1c1c1e;
+@define-color menu_fg_dim rgba(28, 28, 30, 0.45);
+@define-color menu_hover rgba(0, 0, 0, 0.07);
+@define-color menu_separator rgba(0, 0, 0, 0.08);
