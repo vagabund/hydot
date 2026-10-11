@@ -1,0 +1,5 @@
+/* GTK 4.24 сообщает композитору регион блюра через ext-background-effect.
+   Без backdrop-filter регион пустой, и Hyprland такие окна не блюрит. */
+window {
+  backdrop-filter: blur(10px);
+}
