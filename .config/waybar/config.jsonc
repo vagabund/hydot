@@ -14,7 +14,6 @@
     ],
     "modules-right": [
         //"custom/theme-switcher",
-        "mpd",
         //"custom/media",
         "mpris",
         "pulseaudio",
@@ -22,54 +21,15 @@
         //"memory",
         //"temperature",
         //"temperature#case",
-        "backlight",
-        "tray",
+        "group/connectivity",
         "hyprland/language",
-        "battery",
-        "battery#bat2",
         "clock",
         "custom/swaync"
         //"custom/power"
     ],
     "hyprland/workspaces": {
-        "on-scroll-up": "hyprctl dispatch workspace e-1",
-        "on-scroll-down": "hyprctl dispatch workspace e+1"
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
     },
     //"idle_inhibitor": {
         //"format": "{icon}",
@@ -93,10 +53,43 @@
     "tray": {
         "icon-size": 18,
         "spacing": 10,
+        "icons": {
+            "Happ": "happ-tray-symbolic",
+            "tray-id": "portproton-tray-symbolic" // PortProton
+        },
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
+    },
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "modules": ["network", "bluetooth", "tray"]
+    },
+    "network": {
+        "interface": "en*", // skip the happ-xray tunnel
+        "format-ethernet": "",
+        "format-wifi": "",
+        "format-linked": "",
+        "format-disconnected": "",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Нет подключения",
+        "interval": 5,
+        "on-click": "kitty --title nmtui nmtui"
+    },
+    "bluetooth": {
+        "format": "",
+        // empty format hides the module when the adapter is off or missing
+        "format-disabled": "",
+        "format-off": "",
+        "format-no-controller": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}: {status}",
+        "tooltip-format-connected": "{controller_alias}: {num_connections} подключено\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} — {device_battery_percentage}%",
+        "on-click": "overskride"
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -128,35 +121,12 @@
       "format-icons": ["", "", ""],
       "critical-threshhold": 70
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
     "hyprland/language": {
 	"format": "{}",
 	"format-en": "en",
 	"format-ru": "ru",
 	"keyboard-name": "asus-asus-strix-tactic-pro-gaming-keyboard",
 	"on-click": "hyprctl switchxkblayout asus-asus-strix-tactic-pro-gaming-keyboard next"
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
     },
     //"power-profiles-daemon": {
       //"format": "{icon}",
@@ -168,15 +138,6 @@
         //"balanced": "",
         //"power-saver": ""
       //}
-    //},
-    //"network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        //"format-wifi": "{essid} ({signalStrength}%) ",
-        //"format-ethernet": "{ipaddr}/{cidr} ",
-        //"tooltip-format": "{ifname} via {gwaddr} ",
-        //"format-linked": "{ifname} (No IP) ",
-        //"format-disconnected": "Disconnected ⚠",
-        //"format-alt": "{ifname}: {ipaddr}/{cidr}"
     //},
     "pulseaudio": {
     "format": "{icon} {volume}% ",

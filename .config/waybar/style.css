@@ -60,18 +60,18 @@ button:hover {
 }
 
 #workspaces button.active {
-    background: rgba(0, 0, 0, 0.2);
-    background-color: #3584e4;
+    /* glass, same recipe as #connectivity (was solid #3584e4) */
+    background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
-    box-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px rgba(255, 255, 255, 0.35);
     font-weight: bold;
 }
 
 #workspaces button.focused {
-    background: rgba(0, 0, 0, 0.2);
-    background-color: #3584e4;
+    /* glass, same recipe as #connectivity (was solid #3584e4) */
+    background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
-    box-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px rgba(255, 255, 255, 0.35);
     font-weight: bold;
 }
 
@@ -79,28 +79,18 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#mode {
-    background-color: transparent;
-    box-shadow: none;
-}
-
 #clock,
-#battery,
 #cpu,
 #memory,
 #disk,
 #temperature,
-#backlight,
 #network,
 #pulseaudio,
 #wireplumber,
 #custom-media,
 #tray,
-#mode,
 #idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
+#power-profiles-daemon {
     padding: 0 10px;
     color: #ffffff;
     background-color: transparent;
@@ -129,28 +119,6 @@ button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-#battery {
-    color: #ffffff;
-}
-
-#battery.charging, #battery.plugged {
-    color: #4cd97b;
-}
-
-@keyframes blink {
-    to {
-        color: #f53c3c;
-    }
-}
-
-#battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
 
 #power-profiles-daemon {
     padding-right: 15px;
@@ -184,12 +152,27 @@ label:focus {
     color: #ffffff;
 }
 
-#backlight {
-    color: #ffffff;
+/* network, bluetooth and tray share one glass pill */
+#connectivity {
+    margin: 1px 6px;
+    padding: 0 2px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
 }
 
-#network {
+#network,
+#bluetooth {
     color: #ffffff;
+    font-size: 16px;
+    padding: 0 8px;
+    margin: 0;
+}
+
+#network:hover,
+#bluetooth:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #network.disconnected {
@@ -236,7 +219,7 @@ label:focus {
 }
 
 #tray:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
 }
 
 #tray > .passive {
@@ -264,22 +247,6 @@ label:focus {
 
 #mpris:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
-
-#mpd {
-    color: #ffffff;
-}
-
-#mpd.disconnected {
-    color: #f53c3c;
-}
-
-#mpd.stopped {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-#mpd.paused {
-    color: rgba(255, 255, 255, 0.6);
 }
 
 #language {
@@ -315,14 +282,6 @@ label:focus {
 
 #keyboard-state > label.locked {
     background: rgba(255, 255, 255, 0.1);
-}
-
-#scratchpad {
-    background: transparent;
-}
-
-#scratchpad.empty {
-    background-color: transparent;
 }
 
 #privacy {
@@ -441,4 +400,14 @@ menu separator {
     min-height: 1px;
     margin: 4px 8px;
     border-radius: 0;
+}
+
+#connectivity #tray {
+    margin: 0;
+    padding-left: 6px;
+    /* short divider between system icons and app icons */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+    background-size: 1px 55%;
+    background-position: 2px center;
+    background-repeat: no-repeat;
 }

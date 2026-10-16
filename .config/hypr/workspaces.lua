@@ -121,6 +121,7 @@ rule({ class = "^(firefox)$", title = "^(Library)$" },                          
 rule({ class = "^(kitty)$",   title = "^(top)$" },                              { float = true })
 rule({ class = "^(kitty)$",   title = "^(btop)$" },                             { float = true })
 rule({ class = "^(kitty)$",   title = "^(htop)$" },                             { float = true })
+rule({ class = "^(kitty)$",   title = "^(nmtui)$" },                            { float = true, size = { 900, 600 }, center = true })
 
 local floatByClass = {
     "^(vlc)$",
