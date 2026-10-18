@@ -49,8 +49,8 @@ local opacityByClass = {
     { "^(polkit-gnome-authentication-agent-1)$",         "0.80 0.70 1" },
     { "^(org.freedesktop.impl.portal.desktop.gtk)$",     "0.80 0.70 1" },
     { "^(org.freedesktop.impl.portal.desktop.hyprland)$", "0.80 0.70 1" },
-    { "^([Ss]team)$",                                    "0.85 0.85 1" },
-    { "^(steamwebhelper)$",                              "0.85 0.85 1" },
+    { "^([Ss]team)$",                                    "0.90 0.90 1" },
+    { "^(steamwebhelper)$",                              "0.90 0.90 1" },
     { "^([Ss]potify)$",                                  "0.90 0.90 1" },
 }
 for _, r in ipairs(opacityByClass) do
@@ -67,7 +67,6 @@ local opacityByClass2 = {
     { "^(com.obsproject.Studio)$",                "0.80 0.80" }, -- Obs-Qt
     { "^(gnome-boxes)$",                          "0.80 0.80" }, -- Boxes-Gtk
     { "^(vesktop)$",                              "0.80 0.80" }, -- Vesktop
-    { "^(discord)$",                              "0.90 0.90" }, -- Discord-Electron
     { "^(WebCord)$",                              "0.90 0.90" }, -- WebCord-Electron
     { "^(ArmCord)$",                              "0.90 0.90" }, -- ArmCord-Electron
     { "^(app.drey.Warp)$",                        "0.80 0.80" }, -- Warp-Gtk

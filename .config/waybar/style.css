@@ -200,12 +200,6 @@ label:focus {
     color: #f53c3c;
 }
 
-#custom-media {
-    color: #ffffff;
-    min-width: 100px;
-    font-weight: bold;
-}
-
 #temperature {
     color: #ffffff;
 }
@@ -239,13 +233,13 @@ label:focus {
     color: #ffffff;
 }
 
-#mpris {
+#custom-media {
     font-size: 15px;
     color: #ffffff;
     padding: 1px 8px 0px 8px;
 }
 
-#mpris:hover {
+#custom-media:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 

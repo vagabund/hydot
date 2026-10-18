@@ -14,8 +14,8 @@
     ],
     "modules-right": [
         //"custom/theme-switcher",
-        //"custom/media",
-        "mpris",
+        "custom/media",
+        //"mpris", // segfaults in waybar 0.15, replaced by custom/media
         "pulseaudio",
         //"cpu",
         //"memory",
@@ -175,11 +175,11 @@
           "format": "{}",
           "exec": "~/.config/waybar/scripts/media.sh",
           "return-type": "json",
-          "interval": 1,
-          "on-click": "playerctl play-pause",
-          "on-click-right": "playerctl next",
-          "on-scroll-up": "playerctl next",
-          "on-scroll-down": "playerctl previous",
+          "escape": true,
+          "on-click": "playerctl --ignore-player=firefox,chromium play-pause",
+          "on-click-right": "playerctl --ignore-player=firefox,chromium next",
+          "on-scroll-up": "playerctl --ignore-player=firefox,chromium next",
+          "on-scroll-down": "playerctl --ignore-player=firefox,chromium previous",
           "tooltip": true
     }
 }
