@@ -20,6 +20,7 @@ hl.env("QT_QPA_PLATFORMTHEME_QT6", "qt6ct")
 hl.env("QT_PLUGIN_PATH", "/usr/lib/qt6/plugins")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.env("GDK_SCALE", "1")
+hl.env("FREETYPE_PROPERTIES", "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 -- В старом конфиге SDL_VIDEODRIVER задавался дважды (wayland, затем x11) —

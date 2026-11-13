@@ -21,3 +21,5 @@ zstyle ':fzf-tab:*'     fzf-command fzf --height=40% --border --reverse
 compinit
 # End of lines added by compinstall
 eval "$(starship init zsh)"
+
+. "$HOME/.local/share/../bin/env"

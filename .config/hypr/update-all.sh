@@ -30,6 +30,8 @@ echo
 echo "==> [2/3] yay update"
 if command -v yay >/dev/null 2>&1; then
   yay -Syu
+elif command -v paru >/dev/null 2>&1; then
+  paru -Syu
 else
   echo "!!! yay not found"
 fi

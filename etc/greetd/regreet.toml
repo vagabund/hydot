@@ -1,0 +1,24 @@
+[background]
+path = "/usr/share/backgrounds/regreet.jpg"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+cursor_theme_name = "Adwaita"
+cursor_blink = true
+font_name = "Adwaita Sans 13"
+icon_theme_name = "Adwaita"
+theme_name = "Adwaita"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]
+
+[appearance]
+greeting_msg = "С возвращением!"
+
+[widget.clock]
+format = "%A, %-d %B   %H:%M"
+resolution = "500ms"
+label_width = 320
+locale = "ru_RU"

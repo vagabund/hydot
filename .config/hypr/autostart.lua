@@ -9,6 +9,9 @@ hl.monitor({
 local wallpaper = os.getenv("HOME") .. "/.cache/wallpaper.jpg"
 
 hl.on("hyprland.start", function()
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface font-name 'Geist 11'")
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface document-font-name 'Geist 12'")
+    hl.exec_cmd("gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Geist Bold 11'")
     hl.exec_cmd("gsettings set org.gnome.desktop.wm.preferences button-layout ':'")
     hl.exec_cmd("gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code 11'")
     hl.exec_cmd("waybar")

@@ -369,10 +369,8 @@
 
 /* Mpris widget */
 :root {
-  --mpris-card-border: rgba(255, 255, 255, 0.10);
   --mpris-bg-brightness: 0.9;
   --mpris-tint: rgba(255, 255, 255, 0.04);
-  --mpris-highlight: rgba(255, 255, 255, 0.22);
   --mpris-shade-left: rgba(0, 0, 0, 0.04);
   --mpris-shade-right: rgba(0, 0, 0, 0.20);
   --mpris-shade-bottom: rgba(0, 0, 0, 0.20);
@@ -386,7 +384,7 @@
 .widget-mpris .widget-mpris-player {
   margin: 0;
   border-radius: 22px;
-  border: 1px solid var(--mpris-card-border);
+  border: none;
   box-shadow: none;
 }
 
@@ -399,9 +397,7 @@
   padding: 16px 16px 12px 16px;
   border-radius: 22px;
   background-color: var(--mpris-tint);
-  box-shadow:
-    inset 0 1.5px 0 var(--mpris-highlight),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06);
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, var(--mpris-shade-bottom) 100%),
     linear-gradient(to right, var(--mpris-shade-left) 0%, var(--mpris-shade-right) 100%);
@@ -466,21 +462,17 @@
   margin-left: 6px;
   margin-right: 6px;
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.24);
-  border: 1px solid rgba(255, 255, 255, 0.30);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
-    0 4px 14px rgba(0, 0, 0, 0.16);
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid transparent;
+  box-shadow: none;
 }
 
 .widget-mpris .mpris-overlay > box > button:nth-child(3):nth-last-child(3):hover,
 .widget-mpris .mpris-overlay > box > button:nth-child(2):nth-last-child(2):hover {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.34);
+  background-color: rgba(255, 255, 255, 0.22);
   transform: scale(1.06);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.65),
-    0 6px 18px rgba(0, 0, 0, 0.20);
+  box-shadow: none;
 }
 
 .widget-mpris .mpris-overlay > box > button:nth-child(3):nth-last-child(3):active,
@@ -701,6 +693,9 @@
 
 .widget-buttons-grid flowboxchild > button:hover {
   background: var(--glass-chip-hover);
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
 }
 
 .widget-buttons-grid flowboxchild > button:active {
@@ -738,4 +733,20 @@
 
 .notification-group.collapsed:hover .notification-row:last-child:not(:only-child) .notification {
   background: var(--glass-card-hover);
+}
+
+/* Keep GTK hover/focus effects inside the action grid flat. */
+.control-center .widget-buttons-grid,
+.control-center .widget-buttons-grid * {
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  filter: none;
+  outline: none;
+}
+
+.control-center .widget-buttons-grid flowboxchild,
+.control-center .widget-buttons-grid flowboxchild:hover,
+.control-center .widget-buttons-grid flowboxchild:selected {
+  background: transparent;
 }

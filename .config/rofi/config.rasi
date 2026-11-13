@@ -4,4 +4,4 @@ configuration {
     drun-display-format:    "{name}[ <span alpha='55%'>{generic}</span>]";
 }
 
-@theme "~/.local/share/rofi/themes/spotlight.rasi"
+@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"

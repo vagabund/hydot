@@ -1,0 +1,185 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 28, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        //"custom/theme-switcher",
+        //"custom/media",
+        "mpris",
+        "pulseaudio",
+        //"cpu",
+        //"memory",
+        //"temperature",
+        //"temperature#case",
+        "group/connectivity",
+        "hyprland/language",
+        "clock",
+        "custom/swaync"
+        //"custom/power"
+    ],
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+    },
+    //"idle_inhibitor": {
+        //"format": "{icon}",
+        //"format-icons": {
+            //"activated": "",
+            //"deactivated": ""
+        //}
+    //},
+    "mpris": {
+      "player-icons": true,
+      "format": "▶ {player_icon} {artist} - {title}",
+      "format-paused": "⏸ {player_icon} {artist} - {title}",
+      "format-stopped": "",
+      "max-length": 150,
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous",
+      "ignored-players": ["chromium", "firefox","firefox.instance_1_194"]
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "icons": {
+            "Happ": "happ-tray-symbolic",
+            "tray-id": "portproton-tray-symbolic" // PortProton
+        },
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "modules": ["network", "bluetooth", "tray"]
+    },
+    "network": {
+        "interface": "en*", // skip the happ-xray tunnel
+        "format-ethernet": "",
+        "format-wifi": "",
+        "format-linked": "",
+        "format-disconnected": "",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Нет подключения",
+        "interval": 5,
+        "on-click": "kitty --title nmtui nmtui"
+    },
+    "bluetooth": {
+        "format": "",
+        // empty format hides the module when the adapter is off or missing
+        "format-disabled": "",
+        "format-off": "",
+        "format-no-controller": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}: {status}",
+        "tooltip-format-connected": "{controller_alias}: {num_connections} подключено\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} — {device_battery_percentage}%",
+        "on-click": "overskride"
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{:%Y-%m-%d}</small></tt>",
+        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        //"format-alt": "{:%Y-%m-%d}",
+        "tooltip": true,
+        "tooltip-format": "{:%A, %d %B %Y}",
+        "on-click": "gnome-calendar"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "temperature#case": {
+      "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": ["", "", ""],
+      "critical-threshhold": 70
+    },
+    "hyprland/language": {
+	"format": "{}",
+	"format-en": "en",
+	"format-ru": "ru",
+	"keyboard-name": "asus-asus-strix-tactic-pro-gaming-keyboard",
+	"on-click": "hyprctl switchxkblayout asus-asus-strix-tactic-pro-gaming-keyboard next"
+    },
+    //"power-profiles-daemon": {
+      //"format": "{icon}",
+      //"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      //"tooltip": true,
+      //"format-icons": {
+        //"default": "",
+        //"performance": "",
+        //"balanced": "",
+        //"power-saver": ""
+      //}
+    //},
+    "pulseaudio": {
+    "format": "{icon} {volume}% ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+    },
+    "custom/theme-switcher": {
+          "tooltip": false,
+          "exec": "~/.config/waybar/scripts/theme_checker.sh",
+          "on-click": "~/.config/hypr/switch_theme.sh",
+          "interval": 1,
+          "return-type": "text"
+    },
+    "custom/swaync": {
+          "format": "",
+          "tooltip": false,
+          "on-click": "swaync-client -op",  // открытие центра уведомлений
+          "on-click-right": "swaync-client -C -sw",  // очистить все уведомления
+          "return-type": "json",
+          "exec": "~/.config/waybar/scripts/swaync-status.sh",
+          "interval": 3
+    },
+    "custom/media": {
+          "format": "{}",
+          "exec": "~/.config/waybar/scripts/media.sh",
+          "return-type": "json",
+          "interval": 1,
+          "on-click": "playerctl play-pause",
+          "on-click-right": "playerctl next",
+          "on-scroll-up": "playerctl next",
+          "on-scroll-down": "playerctl previous",
+          "tooltip": true
+    }
+}
