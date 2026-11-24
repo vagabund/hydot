@@ -324,12 +324,23 @@ label:focus {
 
 /* Подсказки: те же цвета стекла, что у меню (menu.css) */
 tooltip {
+    background-image: none;
     background-color: @menu_bg;
     border: 1px solid @menu_border;
     border-radius: 12px;
     box-shadow: inset 0 1px 0 @menu_highlight;
     padding: 4px 6px;
     margin: 0;
+}
+
+/* Match the tooltip radius instead of Adwaita's 5px CSD corners. */
+tooltip decoration {
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
 }
 
 tooltip label {
